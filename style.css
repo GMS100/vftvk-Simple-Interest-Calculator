@@ -12,10 +12,27 @@ h1 {
 .maindiv {
     background-color:white;
     color:black;
-    width: 300px;
+/* Changed width to better display the heading width: 300px; */
+    width:fit-content;
     padding: 20px;
     border-radius: 25px;
     margin: auto;
 }
 
+/* centered div, p, label, and input define a table to properly
+    format the input fields */
+div.centered {display:table;}
+p { display:table-row;
+    line-height:200%;}
+label {display:table-cell;}
+input {display:table-cell;}
 
+/* better centers the centered table */
+.centered {
+     padding-left: 60px;
+}
+
+/* better centers the showresult outside of the centered table */
+.showresult {
+    padding-left: 60px;
+}

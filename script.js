@@ -1,7 +1,7 @@
 //compute and display simple interest 
 function compute()
 {
-    //create variables for data from form
+    //create variables for input
     var principal = document.getElementById("principal").value;
     var rate = document.getElementById("rate").value;
     var years = document.getElementById("years").value;
@@ -14,15 +14,21 @@ function compute()
     
     //calculate the interest earned
     var interest = (principal * years * rate)/100;
-
-    //identify the end year 
+    
+    //identify the end year for savings
     var year = new Date().getFullYear()+parseInt(years);
+
+    //to convert a number to currency
+    const formatter = new Intl.NumberFormat('en-US', {
+        style:'currency',
+        currency: 'USD'
+    })
 
     //format and display result
     document.getElementById("result").innerHTML=
-    "If you deposit \<mark\>" + principal + "\</mark\>, \<br\>" +
+    "\<b/\>If you deposit \<mark\>" + formatter.format(principal) + "\</mark\>, \<br\>" +
     "at an interest rate of \<mark\>" + rate + "%\</mark\>. \<br\>" +
-    "You will receive an amount of \<mark\>" + interest + "\</mark\>, \<br\>" +
+    "You will receive an amount of \<mark\>" + formatter.format(interest) + "\</mark\>, \<br\>" +
     "in the year \<mark\>" + year + "\</mark\>\<br\>"
 }
 
@@ -35,7 +41,8 @@ function updateRate()
     //set display to the value from slider
     document.getElementById("rate_val").innerText=rateval + "%";
 }
-       
+
+//verify the principal is valid
 function validatePrincipal() 
 {
     var principal = document.getElementById("principal").value;
@@ -49,6 +56,5 @@ function validatePrincipal()
     } else {
         return true;
     }
-        
 
 }
